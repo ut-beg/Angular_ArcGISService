@@ -1,7 +1,8 @@
 # Angular_ArcGISService
 
 By Aaron Averett - aaron.averett@beg.utexas.edu
-Bureau of Economic Geology
+
+Bureau of Economic Geology, The University of Texas at Austin
 
 This is a service for use with the Angular Javascript MVC framework.  It provides an abstraction layer for the ArcGIS REST API within an Angular application.  
 
