@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html ng-app="arcGISServiceDemoApp">
+<head>
+    <title>Angular ArcGIS REST API Service Demo App</title>
+	<meta charset="utf-8" />
+    
+    <script language="javascript" src="js/angular.js"></script>
+    <script language="javascript" src="js/LocalStorageService.js"></script>
+    <script language="javascript" src="js/ArcGISService.js"></script>
+    <script language="javascript" src="js/app.js"></script>
+</head>
+<body ng-controller="ArcGISServiceDemoController">
+    <h2>Service Description</h2>
+    <table>
+        <tr>
+            <td>Map Name: </td>
+            <td>{{ serviceData.mapName }}</td>
+        </tr>
+        <tr>
+            <td>Description: </td>
+            <td>{{ serviceData.serviceDescription }}</td>
+        </tr>
+    </table>
+
+    <h2>Layers</h2>
+    <table>
+        <tr ng-repeat="layer in serviceData.layers">
+            <td>{{layer.name}}</td>
+            <td><input type="button" ng-click="showLayerDetails(layer)" value="Show Details"/></td>
+        </tr>
+    </table>
+    
+    <div ng-if="selectedLayerDetails != null">
+        <h2>Selected Layer Details</h2>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>{{selectedLayerDetails.name}}</td>
+            </tr>
+            <tr>
+                <td>Capabilities:</td>
+                <td>{{selectedLayerDetails.capabilities}}</td>
+            </tr>
+            <tr>
+                <td>Geometry Type:</td>
+                <td>{{selectedLayerDetails.geometryType}}</td>
+            </tr>
+        </table>
+        <h2>Fields</h2>
+        Search for: <input type="text" ng-model="stateVars.queryValue"/>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Data Type</th>
+            </tr>
+            <tr ng-repeat="field in selectedLayerDetails.fields">
+                <td>{{field.name}}</td>
+                <td>{{field.type}}</td>
+                <td>
+                    <input type="button" value="Search This Field" ng-click="doLayerQuery(field)"/>
+                </td>
+            </tr>
+        </table>
+
+        <div ng-if="queryResult != null">
+            <h3>Query Results</h3>
+            <table >
+                <tr>
+                    <th ng-repeat="field in selectedLayerDetails.fields">
+                        {{ field.alias }}
+                    </th>
+                </tr>
+                <tr ng-repeat="feature in queryResult.features">
+                    <td ng-repeat="field in selectedLayerDetails.fields">
+                        {{ feature.attributes[field.name] }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

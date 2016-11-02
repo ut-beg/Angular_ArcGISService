@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "js/LocalStorageService.min.js",
+    "inputFiles": [
+      "js/LocalStorageService.js"
+    ]
+  },
+  {
+    "outputFileName": "js/ArcGISService.min.js",
+    "inputFiles": [
+      "js/ArcGISService.js"
+    ]
+  }
+]
