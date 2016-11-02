@@ -3,7 +3,10 @@
 // 2016-11-02
 // Aaron Averett
 // This is a service that provides access to the browser's local storage feature.  You can use it to store app state information across multiple sessions.
-// 
+//
+// It should be noted that I copy-pasted a significant portion of this code from somewhere I can't remember now.  If you recognize the code in this file as your own, please contact me so 
+// I can give you credit here.
+//
 // Subject to MIT license - see LICENSE file included in the GitHub Repo
 
 var localStorageServiceModule = angular.module('localStorageServiceModule', []);
